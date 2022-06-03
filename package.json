@@ -1,0 +1,31 @@
+{
+  "name": "SverreTS",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "ts-node-dev index.ts",
+    "start:prod": "node build/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/builders": "^0.13.0",
+    "@discordjs/rest": "^0.4.1",
+    "@types/glob": "^7.2.0",
+    "discord-api-types": "^0.33.2",
+    "discord.js": "^13.7.0",
+    "dotenv": "^16.0.1",
+    "glob": "^8.0.3",
+    "node.js": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.2",
+    "@babel/preset-env": "^7.18.2",
+    "eslint": "^8.16.0",
+    "ts-node": "^10.8.0",
+    "typescript": "^4.7.2"
+  }
+}
