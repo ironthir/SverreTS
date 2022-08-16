@@ -1,1 +1,6 @@
-SverreApi
+SverreApi/bin
+SverreApi/.vs
+SverreApi/obj
+SverreApi/SverreData/bin
+SverreApi/SverreData/obj
+SverreApi/SverreData/.vs

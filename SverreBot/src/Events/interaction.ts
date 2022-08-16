@@ -9,17 +9,20 @@ export default new Event("interactionCreate", async (interaction) => {
     const command = client.commands.get(interaction.commandName);
     if (!command)
       return interaction.followUp("You have used a non existent command!");
-    if (
-      client.commandCooldown.some((val: CommandsCooldown) => {
+
+    const isCommandOnCooldown = client.commandCooldown.some(
+      (val: CommandsCooldown) => {
         return (
           JSON.stringify(val) ===
           JSON.stringify({
-            guildID: interaction.guildId,
+            userID: interaction.user.id,
             commandUsed: command.name,
           })
         );
-      })
-    ) {
+      }
+    );
+
+    if (isCommandOnCooldown) {
       return interaction.followUp(
         `This comand is currently on cooldown. Wait ${Math.floor(
           command?.cooldown! / (1000 * 60)
@@ -37,12 +40,12 @@ export default new Event("interactionCreate", async (interaction) => {
     });
     if (command.cooldown) {
       client.commandCooldown.push({
-        guildID: interaction.guildId,
+        userID: interaction.user.id,
         commandUsed: command.name,
       });
       setTimeout(() => {
         client.commandCooldown.splice(0, 1, {
-          guildID: interaction.guildId,
+          userID: interaction.user.id,
           commandUsed: command.name,
         });
       }, command.cooldown);
