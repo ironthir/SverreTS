@@ -15,7 +15,7 @@ public class ExperienceController : ControllerBase
     [HttpGet("GetServerIDs")]
     public IEnumerable<String> GetAllServerIDs()
     {
-     return context.Experience.Select(s => s.serverid).ToList();
+     return context.Experience.Select(s => s.serverid).Distinct().ToList();
      
     }
 }

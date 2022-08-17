@@ -1,9 +1,8 @@
 import { GetStaticProps } from "next";
 import { useEffect, useMemo, useState } from "react";
-import { Card, Col, Container, ListGroup, Row, Table } from "react-bootstrap";
+import { Card, Col, Container, Image, Row, Table } from "react-bootstrap";
 import { Serverinfo, UserInfo } from "../../CommonTypes/CommonTypes";
 import "./LeaderboardStyle.module.scss";
-
 const axios = require("axios");
 //Ah, this, it allows me to make an api call with self signed certificate
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
@@ -51,7 +50,7 @@ export async function getStaticProps({ params }: any) {
     {
       headers: {
         Authorization:
-          "Bot There should be a bot token here, but I won't give it to you on a silver plate",
+          "Bot NzE0MTcyMDEwODc5NTE2NzMz.XsqyhA.KMTAtr8k1j--m60gND45tU09v0A",
       },
     }
   );
@@ -61,7 +60,7 @@ export async function getStaticProps({ params }: any) {
       headers: {
         limit: 100,
         Authorization:
-          "Bot There should be a bot token here, but I won't give it to you on a silver plate",
+          "Bot NzE0MTcyMDEwODc5NTE2NzMz.XsqyhA.KMTAtr8k1j--m60gND45tU09v0A",
       },
       params: { limit: "100" },
     }
@@ -113,11 +112,26 @@ const Leaderboard = (leaderboard: Props) => {
   }, []);
 
   return (
-    <Container className="leaderboard">
-      <Card>
-        <Card.Header>Leaderboard for {leaderboard.serverInfo.name}</Card.Header>
+    <Container className="leaderboard text-white">
+      <Card bg="dark">
+        <Card.Header>
+          <Row className="text-center">
+            <Col>
+              <Image
+                roundedCircle={true}
+                fluid={true}
+                sizes={"10px"}
+                src={`https://cdn.discordapp.com/icons/${leaderboard.serverInfo.id}/${leaderboard.serverInfo.icon}`}
+              />
+
+              <p className="fs-1">
+                Leaderboard for {leaderboard.serverInfo.name}
+              </p>
+            </Col>
+          </Row>
+        </Card.Header>
         <Card.Body>
-          <Table striped bordered hover>
+          <Table className=" text-white" bordered>
             <thead>
               <tr>
                 <th>#</th>
