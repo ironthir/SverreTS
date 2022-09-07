@@ -1,8 +1,7 @@
-import { GetStaticProps } from "next";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { Card, Col, Container, Image, Row, Table } from "react-bootstrap";
 import { Serverinfo, UserInfo } from "../../CommonTypes/CommonTypes";
-import "./LeaderboardStyle.module.scss";
+
 const axios = require("axios");
 //Ah, this, it allows me to make an api call with self signed certificate
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
