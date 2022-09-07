@@ -6,6 +6,7 @@ import { ExperienceSystem } from "../Client/ExperienceSystem";
 import MoneySystem from "../Client/MoneySystem";
 
 export default new Event("messageCreate", async (receivedMessage: Message) => {
+  if (receivedMessage.author.bot) return;
   if (
     !client.talkedRecentlyExp.some((val: ExpCooldown) => {
       return (
