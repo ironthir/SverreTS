@@ -1,6 +1,6 @@
+import { PrismaClient } from "@prisma/client";
 import { Message } from "discord.js";
-import { money, PrismaClient } from "@prisma/client";
-import { TextChannel } from "discord.js";
+
 import { client } from "../..";
 const prisma = new PrismaClient();
 
