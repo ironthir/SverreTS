@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32804.467
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SverreApi", "SverreApi.csproj", "{645CFADE-99B0-48D3-8E54-547019D12852}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SverreData", "SverreData\SverreData.csproj", "{F587617E-88CA-4AFA-B90A-D4A98AC96AF4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{645CFADE-99B0-48D3-8E54-547019D12852}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{645CFADE-99B0-48D3-8E54-547019D12852}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{645CFADE-99B0-48D3-8E54-547019D12852}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{645CFADE-99B0-48D3-8E54-547019D12852}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F587617E-88CA-4AFA-B90A-D4A98AC96AF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F587617E-88CA-4AFA-B90A-D4A98AC96AF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F587617E-88CA-4AFA-B90A-D4A98AC96AF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F587617E-88CA-4AFA-B90A-D4A98AC96AF4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F7517ED9-EEA7-4570-BDEA-E5B30E045DE6}
+	EndGlobalSection
+EndGlobal
