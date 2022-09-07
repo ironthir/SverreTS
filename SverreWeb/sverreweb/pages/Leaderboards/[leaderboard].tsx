@@ -143,7 +143,7 @@ const Leaderboard = (leaderboard: Props) => {
             <tbody>
               {properLeaderboard.map((x: UserInfoForLeaderboard, index) => {
                 return (
-                  <tr>
+                  <tr key={index}>
                     <td>{index + 1}</td>
                     <td>{x.username}</td> <td>{x.level}</td>
                     <td>{x.points}</td>
