@@ -1,6 +1,4 @@
-SverreApi/bin
-SverreApi/.vs
-SverreApi/obj
-SverreApi/SverreData/bin
-SverreApi/SverreData/obj
-SverreApi/SverreData/.vs
+node_modules
+.env
+build
+config.json
