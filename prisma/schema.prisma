@@ -16,13 +16,11 @@ model descriptions {
 }
 
 model experiences {
-  id        Int      @id @default(autoincrement())
-  serverid  String?  @db.VarChar(255)
-  userid    String?  @db.VarChar(255)
-  points    Int?
-  level     Int?
-  createdAt DateTime @db.Timestamptz(6)
-  updatedAt DateTime @updatedAt @db.Timestamptz(6)
+  id       Int     @id @default(autoincrement())
+  serverid String? @db.VarChar(255)
+  userid   String? @db.VarChar(255)
+  points   Int?
+  level    Int?
 }
 
 model inventories {
@@ -30,30 +28,28 @@ model inventories {
   userID    String?  @db.VarChar(255)
   itemname  String?  @db.VarChar(255)
   equipped  Boolean?
-  createdAt DateTime? @db.Timestamptz(6)
-  updatedAt DateTime? @db.Timestamptz(6)
+  createdAt DateTime @db.Timestamptz(6)
+  updatedAt DateTime @db.Timestamptz(6)
 }
 
 model money {
-  id        Int      @id @default(autoincrement())
-  userID    String?  @unique @db.VarChar(255)
-  balance   Int?
-  createdAt DateTime? @db.Timestamptz(6)
-  updatedAt DateTime? @db.Timestamptz(6)
+  id      Int     @id @default(autoincrement())
+  userID  String? @unique @db.VarChar(255)
+  balance Int?
 }
 
 model prefixes {
   id           Int      @id @default(autoincrement())
   name         String?  @unique @db.VarChar(255)
   serverPrefix String?  @db.VarChar(255)
-  createdAt    DateTime? @db.Timestamptz(6)
-  updatedAt    DateTime? @db.Timestamptz(6)
+  createdAt    DateTime @db.Timestamptz(6)
+  updatedAt    DateTime @db.Timestamptz(6)
 }
 
 model shops {
   id        Int      @id @default(autoincrement())
   name      String?  @unique @db.VarChar(255)
   cost      Int?
-  createdAt DateTime? @db.Timestamptz(6)
-  updatedAt DateTime? @db.Timestamptz(6)
+  createdAt DateTime @db.Timestamptz(6)
+  updatedAt DateTime @db.Timestamptz(6)
 }
