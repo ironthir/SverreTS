@@ -1,4 +1,4 @@
-import { Html, Main, NextScript } from "next/dist/pages/_document";
+import { Html, Main, NextScript } from "next/document";
 import Head from "next/head";
 
 export default function Document() {
