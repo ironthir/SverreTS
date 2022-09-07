@@ -1,4 +1,4 @@
-import { experiences, PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { useMemo } from "react";
 import { Card, Col, Container, Image, Row, Table } from "react-bootstrap";
 import { Serverinfo, UserInfo } from "../../CommonTypes/CommonTypes";
@@ -26,7 +26,7 @@ export async function getStaticIDs() {
 export async function getStaticPaths() {
   const prisma = new PrismaClient();
   const ids = await prisma.experiences.findMany();
-  const paths = ids.map((x: experiences) => ({
+  const paths = ids.map((x) => ({
     params: { leaderboard: x.serverid },
   }));
   return { paths, fallback: false };
