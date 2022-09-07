@@ -26,7 +26,7 @@ export async function getStaticIDs() {
 export async function getStaticPaths() {
   const prisma = new PrismaClient();
   const ids = await prisma.experiences.findMany();
-  const paths = ids.map((x) => ({
+  const paths = ids.map((x: any) => ({
     params: { leaderboard: x.serverid },
   }));
   return { paths, fallback: false };
