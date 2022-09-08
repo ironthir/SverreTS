@@ -53,3 +53,9 @@ model shops {
   createdAt DateTime @db.Timestamptz(6)
   updatedAt DateTime @db.Timestamptz(6)
 }
+
+model exclude_moneyandexperience {
+  id        Int    @id @default(autoincrement())
+  serverid  String @db.VarChar(20)
+  channelid String @db.VarChar(20)
+}

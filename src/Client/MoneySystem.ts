@@ -1,8 +1,6 @@
-import { PrismaClient } from "@prisma/client";
 import { Message } from "discord.js";
 
-import { client } from "../..";
-const prisma = new PrismaClient();
+import { client, prisma } from "../..";
 
 class MoneySystem {
   private message: Message;

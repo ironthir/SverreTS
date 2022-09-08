@@ -1,7 +1,6 @@
-import { experiences, PrismaClient } from "@prisma/client";
+import { experiences } from "@prisma/client";
 import { Message, TextChannel } from "discord.js";
-import { client } from "../..";
-const prisma = new PrismaClient();
+import { client, prisma } from "../..";
 
 export class ExperienceSystem {
   private message: Message;

@@ -55,8 +55,8 @@ export default new Command({
 
     voteEmbed.react("✅");
     voteEmbed.react("❌");
-    let votesYes: number = voteEmbed.reactions.cache.get("✅")?.count!;
-    let votesNo: number = voteEmbed.reactions.cache.get("❌")?.count!;
+    let votesYes: number = voteEmbed.reactions.cache.get("✅")?.count ?? 0;
+    let votesNo: number = voteEmbed.reactions.cache.get("❌")?.count ?? 0;
     setTimeout(() => {
       if (votesYes > votesNo && votesYes - votesNo >= 3) {
         member.kick();
@@ -69,6 +69,10 @@ export default new Command({
             value: reason ? reason : "No reason",
           })
           .setDescription("Nobody will miss them")
+          .addFields(
+            { name: "Votes in favour: ", value: (votesYes - 1).toString() },
+            { name: "Votes against: ", value: (votesNo - 1).toString() }
+          )
           .setTimestamp();
         interaction.followUp({ embeds: [afterkicking] });
       } else {
@@ -77,6 +81,10 @@ export default new Command({
           .setTitle("You are safe " + member.displayName)
           .setThumbnail(member.displayAvatarURL())
           .setDescription("For now...")
+          .addFields(
+            { name: "Votes in favour: ", value: (votesYes - 1).toString() },
+            { name: "Votes against: ", value: (votesNo - 1).toString() }
+          )
           .setTimestamp();
         interaction.followUp({ embeds: [notKicked] });
       }
