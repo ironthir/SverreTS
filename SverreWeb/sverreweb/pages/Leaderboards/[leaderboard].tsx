@@ -117,7 +117,7 @@ const Leaderboard = (leaderboard: Props) => {
       .sort((x, y) => {
         return x?.points! > y?.points! ? -1 : 1;
       });
-  }, []);
+  }, [leaderboard.leaderboard, leaderboard.usersInfo]);
   const [domLoaded, setDomLoaded] = useState(false);
 
   useEffect(() => {
