@@ -24,7 +24,7 @@ export type Role = {
 };
 
 export type UserInfo = {
-  avatar: boolean;
+  avatar: string;
   communication_disabled_until: boolean;
   flags: any;
   is_pending: boolean;

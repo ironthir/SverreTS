@@ -1,7 +1,16 @@
 import { PrismaClient } from "@prisma/client";
-import { useMemo } from "react";
-import { Card, Col, Container, Image, Row, Table } from "react-bootstrap";
+import { useEffect, useMemo, useState } from "react";
+import {
+  Card,
+  Col,
+  Container,
+  Image,
+  OverlayTrigger,
+  Row,
+  Tooltip,
+} from "react-bootstrap";
 import { Serverinfo, UserInfo } from "../../CommonTypes/CommonTypes";
+import style from "./LeaderboardStyle.module.scss";
 
 const axios = require("axios");
 
@@ -86,6 +95,7 @@ type UserInfoForLeaderboard = {
   username?: string;
   points?: number;
   level?: number;
+  avatar?: string;
 };
 
 const Leaderboard = (leaderboard: Props) => {
@@ -101,58 +111,89 @@ const Leaderboard = (leaderboard: Props) => {
           level: leaderboard.leaderboard.find(
             (y: ExperienceRow) => y.userid === x.user.id
           )?.level,
+          avatar: x.user.avatar,
         };
       })
       .sort((x, y) => {
         return x?.points! > y?.points! ? -1 : 1;
       });
   }, []);
+  const [domLoaded, setDomLoaded] = useState(false);
+
+  useEffect(() => {
+    setDomLoaded(true);
+  }, []);
+
+  const renderTooltip = (props: any) => (
+    <Tooltip className="d-block d-sm-none" id="button-tooltip " {...props}>
+      {tooltip}
+    </Tooltip>
+  );
+
+  const [tooltip, setTooltip] = useState<string | null>(null);
 
   return (
-    <Container className="leaderboard text-white">
-      <Card bg="dark">
-        <Card.Header>
-          <Row className="text-center">
-            <Col>
-              <Image
-                roundedCircle={true}
-                fluid={true}
-                sizes={"10px"}
-                src={`https://cdn.discordapp.com/icons/${leaderboard.serverInfo.id}/${leaderboard.serverInfo.icon}`}
-              />
+    domLoaded && (
+      <Container>
+        <Card bg="dark">
+          <Card.Header>
+            <Row className="text-center text-white">
+              <td>
+                <Image
+                  roundedCircle={true}
+                  fluid={true}
+                  sizes={"10px"}
+                  src={`https://cdn.discordapp.com/icons/${leaderboard.serverInfo.id}/${leaderboard.serverInfo.icon}`}
+                />
 
-              <p className="fs-1">
-                Leaderboard for {leaderboard.serverInfo.name}
-              </p>
-            </Col>
-          </Row>
-        </Card.Header>
-        <Card.Body>
-          <Table className=" text-white" bordered>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Username</th>
-                <th>Level</th>
-                <th>Points</th>
-              </tr>
-            </thead>
-            <tbody>
-              {properLeaderboard.map((x: UserInfoForLeaderboard, index) => {
+                <p className="fs-1">
+                  Leaderboard for {leaderboard.serverInfo.name}
+                </p>
+              </td>
+            </Row>
+          </Card.Header>
+          <Card.Body className="text-white">
+            <Container className={style.card}>
+              {properLeaderboard.map((x, index) => {
                 return (
-                  <tr key={index}>
-                    <td>{index + 1}</td>
-                    <td>{x.username}</td> <td>{x.level}</td>
-                    <td>{x.points}</td>
-                  </tr>
+                  <Row className={style.row} key={index}>
+                    <Col xs={1} className={style.positionColumn}>
+                      #{index + 1}
+                    </Col>
+                    <Col
+                      xs={1}
+                      className={"d-none d-sm-block " + style.avatarClass}
+                    >
+                      <Image
+                        className={style.avatarClass}
+                        roundedCircle={true}
+                        src={
+                          x.avatar
+                            ? `https://cdn.discordapp.com/avatars/${x.id}/${x.avatar}.jpg`
+                            : "https://cdn.discordapp.com/embed/avatars/1.png"
+                        }
+                      />
+                    </Col>
+                    <OverlayTrigger
+                      placement="top"
+                      overlay={renderTooltip}
+                      onToggle={() => setTooltip(x.username ?? "")}
+                    >
+                      <Col xs={7} sm={6} className={style.usernameColumn}>
+                        {x.username}
+                      </Col>
+                    </OverlayTrigger>
+                    <Col className={style.pointsColumn} xs={3} sm={3}>
+                      {x.points}
+                    </Col>
+                  </Row>
                 );
               })}
-            </tbody>
-          </Table>
-        </Card.Body>
-      </Card>
-    </Container>
+            </Container>
+          </Card.Body>
+        </Card>
+      </Container>
+    )
   );
 };
-
 export default Leaderboard;

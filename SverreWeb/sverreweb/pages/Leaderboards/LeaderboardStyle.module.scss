@@ -1,0 +1,142 @@
+$fontSizeXSmall: 15px;
+
+@media screen and (max-width: 576px) {
+  .positionColumn {
+    width: 8vw;
+    font-size: $fontSizeXSmall;
+    white-space: nowrap;
+  }
+
+  .usernameColumn {
+    text-align: left;
+
+    white-space: nowrap;
+    overflow: auto {
+      display: none;
+    }
+    margin-left: 5vw;
+    font-size: $fontSizeXSmall;
+  }
+  .usernameColumn::-webkit-scrollbar {
+    display: none;
+  }
+  .pointsColumn {
+    text-align: right;
+
+    white-space: nowrap;
+    overflow: hidden;
+
+    font-size: $fontSizeXSmall;
+  }
+  .row {
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+}
+$fontSizeSmall: 20px;
+@media screen and (min-width: 576px) and (max-width: 768px) {
+  .positionColumn {
+    font-size: $fontSizeSmall;
+    white-space: nowrap;
+    margin-top: 13px;
+    width: 3vw;
+  }
+  .avatarClass {
+    width: 40px;
+    margin-left: 13px;
+    margin-top: 5px;
+  }
+  .usernameColumn {
+    text-align: left;
+    margin-top: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-left: 5vw;
+    font-size: $fontSizeSmall;
+  }
+  .pointsColumn {
+    text-align: right;
+    margin-top: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+
+    font-size: $fontSizeSmall;
+  }
+  .row {
+    margin-top: 2%;
+    margin-bottom: 2%;
+  }
+}
+$fontSizeMedium: 30px;
+@media screen and (min-width: 768px) and (max-width: 1080px) {
+  .positionColumn {
+    margin-top: 15px;
+    font-size: $fontSizeMedium;
+    white-space: nowrap;
+    width: 10px;
+  }
+  .avatarClass {
+    width: 80px;
+    margin-left: 18px;
+  }
+  .usernameColumn {
+    margin-top: 15px;
+    text-align: left;
+
+    white-space: nowrap;
+    overflow: hidden;
+
+    margin-left: 40px;
+    font-size: $fontSizeMedium;
+  }
+  .pointsColumn {
+    margin-top: 15px;
+    text-align: right;
+
+    white-space: nowrap;
+    overflow: hidden;
+
+    font-size: $fontSizeMedium;
+  }
+  .row {
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+}
+
+$fontSizeLarge: 30px;
+@media screen and (min-width: 1080px) {
+  .positionColumn {
+    margin-top: 15px;
+    font-size: $fontSizeMedium;
+    white-space: nowrap;
+    width: 10px;
+  }
+  .avatarClass {
+    width: 80px;
+    margin-left: 30px;
+  }
+  .usernameColumn {
+    margin-top: 15px;
+    text-align: left;
+
+    white-space: nowrap;
+    overflow: hidden;
+
+    margin-left: 50px;
+    font-size: $fontSizeMedium;
+  }
+  .pointsColumn {
+    margin-top: 15px;
+    text-align: right;
+
+    white-space: nowrap;
+    overflow: hidden;
+
+    font-size: $fontSizeMedium;
+  }
+  .row {
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+}

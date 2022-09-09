@@ -4,3 +4,6 @@ SverreApi/obj
 SverreApi/SverreData/bin
 SverreApi/SverreData/obj
 SverreApi/SverreData/.vs
+node_modules
+.env
+SverreWeb/sverreweb/.env

@@ -1,3 +1,4 @@
+import { PrismaClient } from "@prisma/client";
 import type { AppProps } from "next/app";
 
 import Layout from "../Components/Layout";
