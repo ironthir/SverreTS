@@ -14,20 +14,18 @@ export default new Event("ready", async () => {
     }
     return arr;
   }, [] as string[]);
-  console.log("d");
+
   for (let guild in uniqueGuildsFromDB) {
     if (!guildsFromApi.includes(guild)) {
       await prisma.experiences.updateMany({
         where: { serverid: guild },
         data: { botpresent: false },
       });
-      console.log("[");
     } else {
       await prisma.experiences.updateMany({
         where: { serverid: guild },
         data: { botpresent: true },
       });
-      console.log("ds");
     }
   }
 });
