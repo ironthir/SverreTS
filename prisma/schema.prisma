@@ -16,11 +16,12 @@ model descriptions {
 }
 
 model experiences {
-  id       Int     @id @default(autoincrement())
-  serverid String? @db.VarChar(255)
-  userid   String? @db.VarChar(255)
-  points   Int?
-  level    Int?
+  id         Int      @id @default(autoincrement())
+  serverid   String?  @db.VarChar(255)
+  userid     String?  @db.VarChar(255)
+  points     Int?
+  level      Int?
+  botpresent Boolean?
 }
 
 model inventories {
