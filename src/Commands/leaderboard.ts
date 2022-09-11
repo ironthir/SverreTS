@@ -10,7 +10,7 @@ export default new Command({
     const leaderboardEmbed = new MessageEmbed({
       title: `Leaderboard for ${interaction.guild?.name}`,
       color: "RED",
-      url: `https://sverre-o2zutrfsn-ironthir.vercel.app//Leaderboards/${interaction.guild?.id}`,
+      url: `https://sverre-ts-ironthir.vercel.app/Leaderboards/${interaction.guild?.id}`,
     })
       .setTimestamp()
       .setThumbnail(
