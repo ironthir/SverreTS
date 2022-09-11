@@ -16,12 +16,12 @@ model descriptions {
 }
 
 model experiences {
-  id        Int      @id @default(autoincrement())
-  serverid  String?  @db.VarChar(255)
-  userid    String?  @db.VarChar(255)
-  points    Int?
-  level     Int?
-
+  id         Int      @id @default(autoincrement())
+  serverid   String   @db.VarChar(50)
+  userid     String   @db.VarChar(255)
+  points     Int
+  level      Int
+  botpresent Boolean?
 }
 
 model inventories {
@@ -34,11 +34,9 @@ model inventories {
 }
 
 model money {
-  id        Int      @id @default(autoincrement())
-  userID    String?  @unique @db.VarChar(255)
-  balance   Int?
-  createdAt DateTime @db.Timestamptz(6)
-  updatedAt DateTime @db.Timestamptz(6)
+  id      Int     @id @default(autoincrement())
+  userID  String? @unique @db.VarChar(255)
+  balance Int?
 }
 
 model prefixes {
@@ -55,4 +53,10 @@ model shops {
   cost      Int?
   createdAt DateTime @db.Timestamptz(6)
   updatedAt DateTime @db.Timestamptz(6)
+}
+
+model exclude_moneyandexperience {
+  id        Int    @id @default(autoincrement())
+  serverid  String @db.VarChar(20)
+  channelid String @db.VarChar(20)
 }

@@ -1,4 +1,5 @@
-import { PrismaClient } from "@prisma/client";
+import { experiences, PrismaClient } from "@prisma/client";
+import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
 import {
   Card,
@@ -9,7 +10,9 @@ import {
   Row,
   Tooltip,
 } from "react-bootstrap";
+
 import { Serverinfo, UserInfo } from "../../CommonTypes/CommonTypes";
+
 import style from "./LeaderboardStyle.module.scss";
 
 const axios = require("axios");
@@ -20,104 +23,85 @@ export type ExperienceRow = {
   userid: string;
   points: number;
   level: number;
-  createdAt: Date;
-  updatedAt: Date;
 };
 
-export async function getStaticIDs() {
+type Props = {
+  leaderboard: ExperienceRow[];
+  serverInfo: Serverinfo;
+  userInfo: UserInfo[];
+};
+
+type UserInfoForLeaderboard = {
+  id: string;
+  username: string;
+  points: number;
+  level: number;
+  avatar: string;
+};
+
+export const getServerSideProps = async (context: any) => {
   const prisma = new PrismaClient();
-  const ids = await prisma.experiences.findMany();
-  return ids.map((x: any) => {
-    return { paths: { leaderboard: x } };
+  const leaderboard = await prisma.experiences.findMany({
+    where: { serverid: context.params.leaderboard },
   });
-}
-
-export async function getStaticPaths() {
-  const prisma = new PrismaClient();
-  const ids = await prisma.experiences.findMany();
-  const paths = ids.map((x: any) => ({
-    params: { leaderboard: x.serverid },
-  }));
-  return { paths, fallback: false };
-}
-
-export async function getServerData(id: any) {
-  const prisma = new PrismaClient();
-  const lead = await prisma.experiences.findMany({ where: { serverid: id } });
-  return lead;
-}
-
-export async function getStaticProps({ params }: any) {
-  const data = await getServerData(params.leaderboard);
-  let arrayOfUserIDs: string[] = data.map((x: any) => {
-    return x.userid;
-  });
-
   const serverInfo = await axios.get(
-    `https://discord.com/api/guilds/${params.leaderboard}`,
+    `https://discord.com/api/guilds/${context.params.leaderboard}`,
     {
       headers: {
         Authorization: `Bot ${process.env.BOT_TOKEN}`,
       },
     }
   );
-  const usersInfo = await axios.get(
-    `https://discord.com/api/guilds/${params.leaderboard}/members`,
+  const userInfo = await axios.get(
+    `https://discord.com/api/guilds/${context.params.leaderboard}/members`,
     {
       headers: {
-        limit: 100,
         Authorization: `Bot ${process.env.BOT_TOKEN}`,
       },
       params: { limit: "100" },
     }
   );
 
+  const tempArrayOfUserIDs = leaderboard.map((x) => {
+    return x.userid;
+  });
+
   return {
     props: {
-      leaderboard: data,
+      leaderboard: leaderboard,
       serverInfo: serverInfo.data,
-      usersInfo: usersInfo.data.filter((x: UserInfo) => {
-        return !x.user.bot && arrayOfUserIDs.includes(x.user.id);
-      }),
+      userInfo: userInfo.data.filter((x: UserInfo) =>
+        tempArrayOfUserIDs.includes(x.user.id)
+      ),
     },
   };
-}
-
-type Props = {
-  leaderboard: ExperienceRow[];
-  serverInfo: Serverinfo;
-  usersInfo: UserInfo[];
 };
 
-//These are all optional, because I'm too lazy to type them properly, and it's late
-type UserInfoForLeaderboard = {
-  id?: string;
-  username?: string;
-  points?: number;
-  level?: number;
-  avatar?: string;
-};
+const Leaderboard = (props: Props) => {
+  const router = useRouter();
+  const { leaderboard } = router.query;
 
-const Leaderboard = (leaderboard: Props) => {
   const properLeaderboard = useMemo<UserInfoForLeaderboard[]>(() => {
-    return leaderboard.usersInfo
+    return props.userInfo
       .map((x: UserInfo) => {
         return {
           id: x.user.id,
           username: `${x.user.username}#${x.user.discriminator} `,
-          points: leaderboard.leaderboard.find(
-            (y: ExperienceRow) => y.userid === x.user.id
-          )?.points,
-          level: leaderboard.leaderboard.find(
-            (y: ExperienceRow) => y.userid === x.user.id
-          )?.level,
+          points:
+            props.leaderboard?.find(
+              (y: ExperienceRow) => y.userid === x.user.id
+            )?.points ?? 1,
+          level:
+            props.leaderboard?.find(
+              (y: ExperienceRow) => y.userid === x.user.id
+            )?.level ?? 1,
           avatar: x.user.avatar,
         };
       })
       .sort((x, y) => {
         return x?.points! > y?.points! ? -1 : 1;
       });
-  }, [leaderboard.leaderboard, leaderboard.usersInfo]);
+  }, [props.leaderboard, props.userInfo]);
   const [domLoaded, setDomLoaded] = useState(false);
 
   useEffect(() => {
@@ -143,12 +127,10 @@ const Leaderboard = (leaderboard: Props) => {
                   roundedCircle={true}
                   fluid={true}
                   sizes={"10px"}
-                  src={`https://cdn.discordapp.com/icons/${leaderboard.serverInfo.id}/${leaderboard.serverInfo.icon}`}
+                  src={`https://cdn.discordapp.com/icons/${leaderboard}/${props.serverInfo.icon}`}
                 />
 
-                <p className="fs-1">
-                  Leaderboard for {leaderboard.serverInfo.name}
-                </p>
+                <p className="fs-1">Leaderboard for {props.serverInfo.name}</p>
               </td>
             </Row>
           </Card.Header>
