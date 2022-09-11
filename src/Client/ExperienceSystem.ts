@@ -33,6 +33,11 @@ export class ExperienceSystem {
             this.message.author.id
           }>, you just reached level ${row.level! + 1}!`
         );
+      } else {
+        await prisma.experiences.update({
+          where: { id: row.id },
+          data: { points: { increment: pointsToAdd } },
+        });
       }
     } else {
       await prisma.experiences.create({
