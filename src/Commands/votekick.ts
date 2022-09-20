@@ -55,8 +55,10 @@ export default new Command({
 
     voteEmbed.react("✅");
     voteEmbed.react("❌");
-    let votesYes: number = voteEmbed.reactions.cache.get("✅")?.count ?? 0;
-    let votesNo: number = voteEmbed.reactions.cache.get("❌")?.count ?? 0;
+    let votesYes: number =
+      (await voteEmbed.reactions.cache.get("✅")?.count) ?? 0;
+    let votesNo: number =
+      (await voteEmbed.reactions.cache.get("❌")?.count) ?? 0;
     setTimeout(() => {
       if (votesYes > votesNo && votesYes - votesNo >= 3) {
         member.kick();
