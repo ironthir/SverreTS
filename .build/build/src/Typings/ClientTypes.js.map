@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../build/src/Typings/ClientTypes.js"],
+  "sourcesContent": ["\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\n"],
+  "mappings": ";AACA,OAAO,eAAe,SAAS,cAAc,EAAE,OAAO,KAAK,CAAC;",
+  "names": []
+}

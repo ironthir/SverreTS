@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../src/Commands.ts"],
+  "sourcesContent": ["import { ChatInputApplicationCommandData, CommandInteraction, CommandInteractionOptionResolver, GuildMember, PermissionResolvable, UserMention } from \"discord.js\";\nimport { ExtendedClient } from \"./Client/Client\";\n\nexport interface ExtendedInteraction extends CommandInteraction {\n    member: GuildMember\n}\ninterface RunOptions {\n    client: ExtendedClient,\n    interaction: ExtendedInteraction,\n    args: CommandInteractionOptionResolver\n}\n\ntype RunFunction = (option: RunOptions) => void;\nexport type CommandType = {\n    run: RunFunction\n    userPermissions?: PermissionResolvable[];\n    cooldown?: number;\n} & ChatInputApplicationCommandData\n\nexport class Command {\n    constructor(commandOptions: CommandType) {\n        Object.assign(this, commandOptions)\n    }\n}"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAmBO,MAAM,QAAQ;AAAA,EACjB,YAAY,gBAA6B;AACrC,WAAO,OAAO,MAAM,cAAc;AAAA,EACtC;AACJ;",
+  "names": []
+}

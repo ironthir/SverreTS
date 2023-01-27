@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../build/src/Typings/Events.js"],
+  "sourcesContent": ["\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.Event = void 0;\r\nclass Event {\r\n    constructor(event, run) {\r\n        this.event = event;\r\n        this.run = run;\r\n    }\r\n}\r\nexports.Event = Event;\r\n"],
+  "mappings": ";AACA,OAAO,eAAe,SAAS,cAAc,EAAE,OAAO,KAAK,CAAC;AAC5D,QAAQ,QAAQ;AAChB,MAAM,MAAM;AAAA,EACR,YAAY,OAAO,KAAK;AACpB,SAAK,QAAQ;AACb,SAAK,MAAM;AAAA,EACf;AACJ;AACA,QAAQ,QAAQ;",
+  "names": []
+}

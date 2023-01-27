@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../build/src/Commands.js"],
+  "sourcesContent": ["\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.Command = void 0;\r\nclass Command {\r\n    constructor(commandOptions) {\r\n        Object.assign(this, commandOptions);\r\n    }\r\n}\r\nexports.Command = Command;\r\n"],
+  "mappings": ";AACA,OAAO,eAAe,SAAS,cAAc,EAAE,OAAO,KAAK,CAAC;AAC5D,QAAQ,UAAU;AAClB,MAAM,QAAQ;AAAA,EACV,YAAY,gBAAgB;AACxB,WAAO,OAAO,MAAM,cAAc;AAAA,EACtC;AACJ;AACA,QAAQ,UAAU;",
+  "names": []
+}

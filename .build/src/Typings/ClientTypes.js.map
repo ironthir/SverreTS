@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../src/Typings/ClientTypes.ts"],
+  "sourcesContent": ["import { ApplicationCommandDataResolvable } from \"discord.js\";\n\nexport interface RegisterCommandOptions {\n  guildId?: string;\n  commands: ApplicationCommandDataResolvable[];\n}\n\nexport type CommandsCooldown = {\n  userID: string | null;\n  commandUsed: string | null;\n};\n\nexport type ExpCooldown = {\n  guildID: string | null;\n  userID: string | null;\n};\n"],
+  "mappings": ";;;;;;;;;;;;;;AAAA;AAAA;",
+  "names": []
+}

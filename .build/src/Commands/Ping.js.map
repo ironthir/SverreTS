@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../src/Commands/Ping.ts"],
+  "sourcesContent": ["import { Command } from \"../Commands\";\n\nexport default new Command({\n  name: \"ping\",\n  description: \"replies with pong\",\n  run: async ({ interaction }) => {\n   await interaction.followUp(\"Pong\");\n   \n  },\n});\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,sBAAwB;AAExB,IAAO,eAAQ,IAAI,wBAAQ;AAAA,EACzB,MAAM;AAAA,EACN,aAAa;AAAA,EACb,KAAK,OAAO,EAAE,YAAY,MAAM;AAC/B,UAAM,YAAY,SAAS,MAAM;AAAA,EAElC;AACF,CAAC;",
+  "names": []
+}

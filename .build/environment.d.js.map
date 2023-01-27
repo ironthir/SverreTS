@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../environment.d.ts"],
+  "sourcesContent": ["declare global {\n    namespace NodeJS {\n        interface ProcessEnv {\n            botToken: string,\n            guildId: string,\n            environment: \"dev\" | \"debug\" | \"prod\"\n        }\n    }\n}\nexport {}"],
+  "mappings": ";;;;;;;;;;;;;;AAAA;AAAA;",
+  "names": []
+}

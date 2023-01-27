@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../index.ts"],
+  "sourcesContent": ["import { PrismaClient } from \"@prisma/client\";\nimport { ExtendedClient } from \"./src/Client/Client\";\n\nexport const client = new ExtendedClient();\n\nexport const prisma = new PrismaClient();\n\nclient.start();\nclient.login(process.env.TOKEN);\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,oBAA6B;AAC7B,oBAA+B;AAExB,MAAM,SAAS,IAAI,6BAAe;AAElC,MAAM,SAAS,IAAI,2BAAa;AAEvC,OAAO,MAAM;AACb,OAAO,MAAM,QAAQ,IAAI,KAAK;",
+  "names": []
+}

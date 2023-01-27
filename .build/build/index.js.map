@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../build/index.js"],
+  "sourcesContent": ["\"use strict\";\r\nObject.defineProperty(exports, \"__esModule\", { value: true });\r\nexports.prisma = exports.client = void 0;\r\nconst client_1 = require(\"@prisma/client\");\r\nconst Client_1 = require(\"./src/Client/Client\");\r\nrequire(\"dotenv\").config();\r\nexports.client = new Client_1.ExtendedClient();\r\nexports.prisma = new client_1.PrismaClient();\r\nexports.client.start();\r\nexports.client.login(process.env.TOKEN);\r\n"],
+  "mappings": ";AACA,OAAO,eAAe,SAAS,cAAc,EAAE,OAAO,KAAK,CAAC;AAC5D,QAAQ,SAAS,QAAQ,SAAS;AAClC,MAAM,WAAW,QAAQ,gBAAgB;AACzC,MAAM,WAAW,QAAQ,qBAAqB;AAC9C,QAAQ,QAAQ,EAAE,OAAO;AACzB,QAAQ,SAAS,IAAI,SAAS,eAAe;AAC7C,QAAQ,SAAS,IAAI,SAAS,aAAa;AAC3C,QAAQ,OAAO,MAAM;AACrB,QAAQ,OAAO,MAAM,QAAQ,IAAI,KAAK;",
+  "names": []
+}
