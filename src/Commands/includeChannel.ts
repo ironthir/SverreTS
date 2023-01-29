@@ -1,5 +1,4 @@
 import { TextChannel } from "discord.js";
-import { APIMessage } from "discord.js/node_modules/discord-api-types/v10";
 import { ChannelTypes } from "discord.js/typings/enums";
 import { prisma } from "../..";
 

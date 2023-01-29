@@ -1,5 +1,4 @@
 import { Message, MessageEmbed, Permissions } from "discord.js";
-import { APIMessage } from "discord.js/node_modules/discord-api-types/v10";
 import { Command } from "../Commands";
 
 export default new Command({

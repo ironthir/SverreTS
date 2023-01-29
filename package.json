@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "npx ts-node-dev index.ts",
     "start:prod": "node build/index.js",
-    "start": "ts-node src/index.ts",
+    "start": "ts-node index.ts",
     "postinstall": "prisma generate"
   },
   "keywords": [],
@@ -25,7 +25,8 @@
     "dotenv": "^16.0.1",
     "glob": "^8.0.3",
     "node.js": "^0.0.1-security",
-    "postgres": "^3.2.4"
+    "postgres": "^3.2.4",
+    "typescript": "^4.9.4"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",
